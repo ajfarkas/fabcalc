@@ -3,9 +3,62 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Woodworking calculations</title>
+	<title>Woodworking/Fab calculations</title>
+	<link rel="stylesheet" href="./calc.css" />
+	<script type="text/javascript" src="./calc.js"></script>
 </head>
 <body>
-
+	<h1>Decimal to fraction conversion for fabrication</h1>
+	<fieldset>
+		<label>
+			<p class="label">Decimal to convert</p>
+			<input type="number" id="decimal" name="decimal" placeholder="0.0" step="any" />
+		</label>
+		<label>
+			<p class="label">rounding denominator</p>
+			<select id="round" name="round">
+				<option selected value="false">None</option>
+				<option value="2">2</option>
+				<option value="4">4</option>
+				<option value="8">8</option>
+				<option value="16">16</option>
+				<option value="32">32</option>
+				<option value="64">64</option>
+			</select>
+		</label>
+		<label>
+			<p class="label">Rounding</p>
+			<select id="direction" name="direction">
+				<option default value="false">Closest</option>
+				<option value="up">Up</option>
+				<option value="down">Down</option>
+			</select>
+		</label>
+		<button type="button" id="decimal-btn">convert to fraction</button>
+		<p id="decimal-result" class="result"></p>
+	</fieldset>
 </body>
+<script>
+	const decInput = document.getElementById('decimal');
+	const roundInput = document.getElementById('round');
+	const dirInput = document.getElementById('direction');
+	const decButton = document.getElementById('decimal-btn');
+	const decResult = document.getElementById('decimal-result');
+
+	decButton.addEventListener('click', () => {
+		let result;
+		const decimal = parseFloat(decInput.value);
+		const denominator = parseInt(roundInput.value);
+		const roundDirection = dirInput.value;
+
+		result = decToFraction(decimal);
+		if (denominator) {
+			result = decToRoundedFraction(decimal, 3, denominator, roundDirection);
+		} else {
+			result = decToFraction(decimal);
+		}
+
+		decResult.innerText = result;
+	});
+</script>
 </html>

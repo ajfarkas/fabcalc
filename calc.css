@@ -1,0 +1,35 @@
+* {
+	margin: 0;
+}
+html {
+	font-size: 6.25%;
+}
+body {
+	padding: 8px;
+	background: black;
+	color: white;
+	font-size: 16rem;
+	font-family: monospace;
+}
+h1 {
+	font-family: sans-serif;
+}
+input,
+select {
+	margin-bottom: 16px;
+	font-size: 24rem;
+}
+button {
+	display: block;
+	margin-top: 24px;
+	padding: 4px 8px;
+	font-size: 24rem;
+	color: lightyellow;
+	background-color: #3b6163;
+	border: 1px solid;
+	border-radius: 4px;
+}
+.result {
+	font-size: 24rem;
+	margin-top: 32px;
+}
